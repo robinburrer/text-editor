@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 interface Props {
-  title: string
+  title: string;
+  defaultValue: string;
 }
 
 const props = defineProps<Props>();
 const emit = defineEmits(['blur'])
 
-const textValue = ref('');
+const textValue = ref(props.defaultValue);
   
 
 const blurHandler = () => {
@@ -21,7 +22,7 @@ const blurHandler = () => {
 <template>
   <div class="link-area">
     <label>{{ title }}</label>
-    <input type="text" @blur="blurHandler" v-model="textValue"/>
+    <input type="text" @blur="blurHandler" v-model="textValue" />
   </div>
 </template>
 
