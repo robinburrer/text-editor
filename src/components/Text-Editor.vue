@@ -10,7 +10,7 @@ const addLink = () => {
   <div class="editor">
 
 
-  <h1>texteditor PT</h1>
+  <h1>TextEditor PT</h1>
 
   <textarea> </textarea>
   <hr>
@@ -26,18 +26,19 @@ const addLink = () => {
 <style scoped>
 
   h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
     text-align: center;
   }
-  .editor {
-    width: 300px;
-    /* background-color: red; */
+
+
+  button {
+    width: 100%;
   }
 
 
   textarea {
-    width: 300px;
+    width: 100%;
     height: 200pX;
   }
 
