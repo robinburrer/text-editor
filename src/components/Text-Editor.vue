@@ -2,20 +2,49 @@
 import { ref } from 'vue';
 import LinkInput from './LinkInput.vue';
 
+// init stuff
+const savedCursorPosition = { start: 0, end: 0 };
+const textarea = ref();
 
 const linkObj = ref( {
   title: '',
   url: '',
 });
 
+/**
+ * addLink
+ */
 const addLink = () => {
   console.log(linkObj.value)
+  const markdownLink = createMarkdownLink(linkObj.value.title, linkObj.value.url)
+  insertTextAtCursor(markdownLink)
 }
 
-const textarea = ref();
+/**
+ * insertTextAtCursor
+ * @param text 
+ */
+function insertTextAtCursor(text: string) {
+   
+    var cursorPos = textarea.value.selectionStart;
+    var textBefore = textarea.value.value.substring(0, cursorPos);
+    var textAfter = textarea.value.value.substring(cursorPos);
+    textarea.value.value = textBefore + text + textAfter;
+    
+    // Move the cursor position after the inserted text
+    textarea.value.setSelectionRange(cursorPos + text.length, cursorPos + text.length);
+    
+    textarea.value.focus();
+  }
+
+  const createMarkdownLink  = (title: string, url: string) => {
+    return `[${title}](${url})`;
+  }
 
 
-var savedCursorPosition = { start: 0, end: 0 };
+
+
+
 
 function saveCursorPosition() {
     savedCursorPosition.start = textarea.value.selectionStart;
