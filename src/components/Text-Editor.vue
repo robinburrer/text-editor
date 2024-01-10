@@ -2,8 +2,14 @@
 import { ref } from 'vue';
 import LinkInput from './LinkInput.vue';
 
+
+const linkObj = ref( {
+  title: '',
+  url: '',
+});
+
 const addLink = () => {
-  console.log('add link')
+  console.log(linkObj.value)
 }
 
 const textarea = ref();
@@ -35,8 +41,8 @@ function saveCursorPosition() {
   <textarea ref="textarea"> </textarea>
   <hr>
   <div class="link-area">
-    <LinkInput title="Link Name:" />
-    <LinkInput title="URL:" />
+    <LinkInput title="Link Name:" @blur="(event) => linkObj.title = event" />
+    <LinkInput title="URL:" @blur="(event) => linkObj.url = event"/>
   </div>
 
   <button @click="addLink">Add Link</button>

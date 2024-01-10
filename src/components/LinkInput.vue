@@ -1,20 +1,31 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 interface Props {
   title: string
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits(['blur'])
+
+const textValue = ref('');
+  
+
+const blurHandler = () => {
+  console.log('blur', textValue.value);
+
+  emit('blur',textValue.value);
+}
 
 </script>
 
 <template>
   <div class="link-area">
     <label>{{ title }}</label>
-    <input type="text" />
+    <input type="text" @blur="blurHandler" v-model="textValue"/>
   </div>
 </template>
 
-<style scoped>
+<style scoped>  
 
 label {
   min-width: 80px;
