@@ -93,12 +93,7 @@ function saveCursorPosition() {
 
     <h1>TextEditor PT</h1>
 
-    <textarea ref="textarea" @blur="saveCursorPosition">
-  # Headline
-  1. 
-  2. 
-  3.  
-  </textarea>
+    <textarea ref="textarea" @blur="saveCursorPosition"># Headline</textarea>
     <hr>
     <div class="link-area">
       <LinkInput title="Link Name:" @blur="(event) => linkObj.title = event" :defaultValue="linkObj.title" />
