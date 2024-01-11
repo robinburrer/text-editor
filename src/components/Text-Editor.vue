@@ -39,10 +39,6 @@ function insertTextAtCursor(text: string) {
     
       textarea.value?.focus();
     }
-
-    
-    // Move the cursor position after the inserted text
-
   }
 
   const createMarkdownLink  = (title: string, url: string) => {
@@ -65,9 +61,6 @@ function insertTextAtCursor(text: string) {
 
   onMounted(updateOutput);
 
-  
-
-
 
 
 function saveCursorPosition() {
@@ -77,14 +70,9 @@ function saveCursorPosition() {
   savedCursorPosition.end = textarea.value.selectionEnd;
 
   console.log("Cursor position saved:", savedCursorPosition);
+  updateOutput()
 }
 
-  // function restoreCursorPosition() {
-  //   textarea.value.focus();
-  //   textarea.value.setSelectionRange(savedCursorPosition.start, savedCursorPosition.end);
-
-  //   console.log("Cursor position restored to:", savedCursorPosition);
-  // }
 </script>
 
 <template>
@@ -93,7 +81,7 @@ function saveCursorPosition() {
 
     <h1>TextEditor PT</h1>
 
-    <textarea ref="textarea" @blur="saveCursorPosition"># Headline</textarea>
+    <textarea ref="textarea" @blur="saveCursorPosition" @keyup="updateOutput" ># Headline</textarea>
     <hr>
     <div class="link-area">
       <LinkInput title="Link Name:" @blur="(event) => linkObj.title = event" :defaultValue="linkObj.title" />

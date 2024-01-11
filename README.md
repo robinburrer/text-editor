@@ -1,6 +1,6 @@
 # text-editor
 
-This template should help get you started developing with Vue 3 in Vite.
+Basic markdown editor that allows the user to insert Links at the current cursor position 
 
 ## Recommended IDE Setup
 
